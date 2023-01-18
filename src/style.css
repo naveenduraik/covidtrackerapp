@@ -215,7 +215,7 @@ tr:nth-child(even):hover{
   left:50%;
   transform:translate(-50%,-50%);
   margin:0;
-  font-family:tahoma,arial,helvetica;
+  font-family:tahoma,arial,helvetica,sans-serif;
   font-size:12px;
   color:white;
 }
