@@ -1,13 +1,461 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <title>Covidapp</title>
-  <base href="/">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Covid-19 Tracker</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.css" rel="stylesheet"  type='text/css'>
+    <script src="http://code.jquery.com/jquery-1.10.0.min.js"></script>
+    <script src="http://iamceege.github.io/tooltipster/dist/js/tooltipster.bundle.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+    <link href="http://iamceege.github.io/tooltipster/dist/css/tooltipster.bundle.min.css" rel="stylesheet" />
+
 </head>
-<body>
-  <app-root></app-root>
+<body>    
+    <nav>
+        <ul>
+            <h6 id="heading">COVID-19<br>INDIA</h6>
+            <li>
+                <a href="#">
+                    <i class="fa fa-home" aria-hidden="true"></i>
+                     <span> Menu</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://blog.covid19india.org" id="blog">
+                    <i class="fa fa-file-o" aria-hidden="true"></i>
+                    <span> Blog</span>
+                </a>
+            </li>
+            <li>
+                <a href="./volunteers.html" id="volunteers">
+                    <i class="fa fa-user" aria-hidden="true"></i>
+                    <span> Volunteers</span>
+                </a>
+            </li>
+            <li>
+                <a href="./about.html" id="about">
+                    <i class="fa fa-question-circle" aria-hidden="true"></i>
+                    <span> About</span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="fa fa-sun-o" aria-hidden="true" onclick="myFunction()"></i>
+                    <span> A sourced initiative</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <div class="container">
+        <p><span class="fa fa-exclamation-triangle"></span> After 18 months of daily updates, we stopped our operations on 31st October, 2021. You can only view data from January 2020 to October 2021 on this website.<a href="https://blog.covid19india.org/2021/08/07/end/" >Read more</a> <span class="fa fa-arrow-right"></span></p>
+    </div>
+    <section class="contain" id="sec1">
+        <div id="col-1">
+            <div style="display: inline-flex;">
+                <h5 id="demo" style="padding-right: 7px;"></h5>
+                <h5><i class="fa fa-bell-o"></i><i class="fa fa-clock-o"></i>  </h5>                
+            </div>
+        <div class="test">
+
+                <div class="card">
+                  <div class="container" id="card1">
+                  <h5>Confirmed</h5>
+                    <h2>+1234</h2>
+                    <h4>1254878</h4>
+                  </div>
+                </div>
+                <div class="card card1" >
+                  <div class="container">
+                    <h5>Active</h5>
+                    <h2>+1234</h2>
+                    <h4>1254878</h4>
+                  </div>
+                </div>
+                <div class="card card2" >
+                  <div class="container">
+                    <h5>Recovered</h5>
+                    <h2>+1234</h2>
+                    <h4>1254878</h4>
+                  </div>
+                </div>
+                <div class="card card3">
+                  <div class="container">
+                    <h5>Deceased</h5>
+                    <h2>+1234</h2>
+                    <h4>1254878</h4>
+                  </div>
+                </div>
+            </div>
+            <div class="vaccine" style="padding:0px 100px;background-color: rgb(165, 105, 105);margin-top:10px;margin-left:100px;margin-right:50px;">
+                <i class="fa fa-shield"></i>1,06,31,24,205 vaccine doses administered
+            </div>
+                <div class="dose" style="color: rgb(130, 120, 120); width: 715px;height: 18px;padding-top: 20px;">
+                  At least one dose<br>
+                  | 
+                </div>
+                  <div class="progress">
+                    <div class="bar" style="width:35%">
+                    </div>
+                    <div class="bar-2" style="width:20%;">
+                    </div>
+                    <div class="number" style="color:rgb(241, 103, 126);width: 500px;padding-top:5px;">
+                        <div>54.9%</div>
+                     </div>
+                  </div>
+                  <div class="dose1" style="color: rgb(130, 120, 120); width: 470px;height: 18px;padding-bottom: 20px;">
+                        |<br>
+                        Fully Vaccinated
+                   </div>
+                   <h4>Search your district or state</h4>
+                   <div class="nosubmit fa fa-search">
+                       <input class="nosubmit" type="text" id="myInput" placeholder="Search" onkeyup="mySearch()">
+                   </div>
+            <div class="tab" style=" overflow:auto;">
+                <table id="myTable">
+                    <tr>
+                         <th>State/UT</th>
+                         <th>Confirmed</th>
+                         <th>Active</th>
+                         <th>Recovered</th>
+                         <th>Deceased</th> 
+                         <th>Tested</th>
+                         <th>Vaccine Doses Administered</th>
+                    </tr>
+                    <tr>
+                        <td>Maharastra</td>
+                        <td>64,11,7898</td>
+                        <td>16,658</td>
+                        <td>64,50,845</td>
+                        <td>31,681</td>
+                        <td>6.3Cr</td>
+                        <td>9.8Cr</td>
+                    </tr>
+                    <tr>
+                        <td>Kerala</td>
+                        <td>64,11,7898</td>
+                        <td>16,658</td>
+                        <td>64,50,845</td>
+                        <td>31,681</td>
+                        <td>6.3Cr</td>
+                        <td>9.8Cr</td>
+                    </tr>
+                    <tr>
+                        <td>Karnataka</td>
+                        <td>64,11,7898</td>
+                        <td>16,658</td>
+                        <td>64,50,845</td>
+                        <td>31,681</td>
+                        <td>6.3Cr</td>
+                        <td>9.8Cr</td>
+                    </tr>
+                    <tr>
+                        <td>TamilNadu</td>
+                        <td>64,11,7898</td>
+                        <td>16,658</td>
+                        <td>64,50,845</td>
+                        <td>31,681</td>
+                        <td>6.3Cr</td>
+                        <td>9.8Cr</td>
+                    </tr>
+                    <tr>
+                        <td>AndraPradesh</td>
+                        <td>64,11,7898</td>
+                        <td>16,658</td>
+                        <td>64,50,845</td>
+                        <td>31,681</td>
+                        <td>6.3Cr</td>
+                        <td>9.8Cr</td>
+                    </tr>
+                    <tr>
+                        <td>Gujarat</td>
+                        <td>64,11,7898</td>
+                        <td>16,658</td>
+                        <td>64,50,845</td>
+                        <td>31,681</td>
+                        <td>6.3Cr</td>
+                        <td>9.8Cr</td>
+                    </tr>
+                    <tr>
+                        <td>Goa</td>
+                        <td>64,11,7898</td>
+                        <td>16,658</td>
+                        <td>64,50,845</td>
+                        <td>31,681</td>
+                        <td>6.3Cr</td>
+                        <td>9.8Cr</td>
+                    </tr>
+                    <tr>
+                        <td>Arunachal Pradesh</td>
+                        <td>64,11,7898</td>
+                        <td>16,658</td>
+                        <td>64,50,845</td>
+                        <td>31,681</td>
+                        <td>6.3Cr</td>
+                        <td>9.8Cr</td>
+                    </tr>
+                    <tr>
+                        <td>Madhya Pradesh</td>
+                        <td>64,11,7898</td>
+                        <td>16,658</td>
+                        <td>64,50,845</td>
+                        <td>31,681</td>
+                        <td>6.3Cr</td>
+                        <td>9.8Cr</td>
+                    </tr>
+                    <tr>
+                        <td>Orissa</td>
+                        <td>64,11,7898</td>
+                        <td>16,658</td>
+                        <td>64,50,845</td>
+                        <td>31,681</td>
+                        <td>6.3Cr</td>
+                        <td>9.8Cr</td>
+                    </tr>
+                    <tr>
+                        <td>Assam</td>
+                        <td>64,11,7898</td>
+                        <td>16,658</td>
+                        <td>64,50,845</td>
+                        <td>31,681</td>
+                        <td>6.3Cr</td>
+                        <td>9.8Cr</td>
+                    </tr>
+                    <tr>
+                        <td>Uttar Pradesh</td>
+                        <td>64,11,7898</td>
+                        <td>16,658</td>
+                        <td>64,50,845</td>
+                        <td>31,681</td>
+                        <td>6.3Cr</td>
+                        <td>9.8Cr</td>
+                    </tr>
+                    <tr>
+                        <td>Bihar</td>
+                        <td>64,11,7898</td>
+                        <td>16,658</td>
+                        <td>64,50,845</td>
+                        <td>31,681</td>
+                        <td>6.3Cr</td>
+                        <td>9.8Cr</td>
+                    </tr>
+                    <tr>
+                        <td>Delhi</td>
+                        <td>64,11,7898</td>
+                        <td>16,658</td>
+                        <td>64,50,845</td>
+                        <td>31,681</td>
+                        <td>6.3Cr</td>
+                        <td>9.8Cr</td>
+                    </tr>
+                    <tr>
+                        <td>Haryana</td>
+                        <td>64,11,7898</td>
+                        <td>16,658</td>
+                        <td>64,50,845</td>
+                        <td>31,681</td>
+                        <td>6.3Cr</td>
+                        <td>9.8Cr</td>
+                    </tr>
+                </table>
+            </div>
+            </div>
+        <div id="col-2" style="padding-left:2% ;">
+            <h1>INDIA</h1>
+            <div class="maps">
+              <img src="./images/map.png" alt="workplace" usemap="#workmap" id="maps">
+            <map name="workmap">
+                <area  title="JAMMU & KASHMIR case:999" coords="130,53,68,9" shape="rect">
+                <area title="PUNJAB case:99" coords="104,105,78,62" shape="rect">
+                <area title="UTTAR PRADESH case:100" coords="109,87,166,150" shape="rect">
+                <area title="RAJASTHAN case:300" coords="93,105,30,149" shape="rect">
+                <area title="MADHYA PRADESH case:209" coords="78,150,167,187" shape="rect">
+                <area title="BIHAR case:199" coords="214,124,171,167" shape="rect">
+                <area title="ARUNACHAL PRADESH case:200" coords="244,141,299,97" shape="rect">
+                <area title="MAHARASTRA case:90" coords="48,223,114,190" shape="rect">
+                <area title="GUJARAT case:70" coords="51,182,12,153" shape="rect">
+                <area title="TAMILNADU case:143" coords="122,331,96,293" shape="rect">
+                <area title="KERALA case:543" coords="95,344,72,294" shape="rect">
+                <area title="KARNATAKA case:140" coords="91,293,68,243" shape="rect">
+
+            </map>
+             </div>
+             <div class="charts">
+                <canvas id="myChart" style=" margin-top: 6%;max-width:550px;margin-left: 7%;display: block;"></canvas>
+                <canvas id="myChart2" style="margin-top: 6%;max-width:550px;margin-left: 7%;display: block;"></canvas>
+                <canvas id="myChart3" style="margin-top: 6%;max-width:550px;margin-left: 7%;display: block;"></canvas>
+                <canvas id="myChart4" style="margin-top: 6%;max-width:550px;margin-left: 7%;display: block;"></canvas>
+   
+             </div>
+            
+        </div>
+    </section>
+    <footer>
+        <h5>COVID-19INDIA</h5>
+        <h5>We stand with everyone fighting on the frontlines</h5>
+        <div class="icons">
+            <a href="https://en.wikipedia.org/wiki/GitHub"  style="text-decoration:none ;">
+                <i class="fa fa-github" aria-hidden="true"></i>
+            </a>
+            <a href="https://en.wikipedia.org/wiki/Database"  style="text-decoration:none ;">
+                <i class="fa fa-database" aria-hidden="true"></i>
+            </a>
+            <a href="https://en.wikipedia.org/wiki/Twitter"  style="text-decoration:none ;">
+                <i class="fa fa-twitter" aria-hidden="true"></i>
+            </a>
+            <a href="https://en.wikipedia.org/wiki/Instagram"  style="text-decoration:none ;">
+                <i class="fa fa-instagram" aria-hidden="true"></i>
+            </a>
+            <a href="https://en.wikipedia.org/wiki/Envelope"  style="text-decoration:none ;">
+                <i class="fa fa-envelope-o" aria-hidden="true"></i>    
+            </a>
+        </div>
+      
+    </footer>
 </body>
+<script>
+    $(document).ready(function() {
+        $('.tooltip').tooltipster({
+
+        });
+    });
+    
+    var date = new Date();
+    var current_date = date.getFullYear()+"-"+(date.getMonth()+1)+"-"+date.getDate();
+    document.getElementById("demo").innerHTML = current_date;
+
+    function mySearch(){
+        var input, filter, table, tr,td,i,txtValue;
+        input = document.getElementById('myInput');
+        filter = input.value.toUpperCase();
+        table = document.getElementById('myTable');
+        tr = table.getElementsByTagName('tr');
+
+        for(i=0; i<tr.length;i++){
+            td = tr[i].getElementsByTagName("td")[0];
+            if(td){
+                txtValue = td.textContent||td.innerText;
+                if(txtValue.toUpperCase().indexOf(filter)>-1){
+                    tr[i].style.display="";
+                }else{
+                    tr[i].style.display="none";
+                }
+            }
+        }
+    }
+    function myFunction(){
+        var element = document.body;
+        element.classList.toggle('dark-mode');
+        element.classList.toggle('fa fa-moon-o');
+    }
+// 1
+    var xValues = [50,60,70,80,90,100,110,120,130,140,150];
+    var yValues = [7,8,8,9,9,9,10,11,14,14,15];
+
+    new Chart("myChart", {
+    type: "line",
+    data: {
+        labels: xValues,
+        datasets: [{
+        fill: false,
+        lineTension: 0,
+        backgroundColor: "rgba(0,0,255,1.0)",
+        borderColor: "rgba(0,0,255,0.1)",
+        data: yValues
+        }]
+    },
+    options: {
+        legend: {display: false},
+        scales: {
+        yAxes: [{ticks: {min: 6, max:16}}],
+        }
+    }
+    });
+        // 2
+        var xValues = [];
+    var yValues = [];
+    generateData("Math.sin(x)", 0, 10, 0.5);
+
+    new Chart("myChart2", {
+    type: "line",
+    data: {
+        labels: xValues,
+        datasets: [{
+        fill: false,
+        pointRadius: 2,
+        borderColor: "rgba(0,0,255,0.5)",
+        data: yValues
+        }]
+    },    
+    options: {
+        legend: {display: false},
+        title: {
+        display: true,
+        fontSize: 16
+        }
+    }
+    });
+    function generateData(value, i1, i2, step = 1) {
+    for (let x = i1; x <= i2; x += step) {
+        yValues.push(eval(value));
+        xValues.push(x);
+    }
+    }
+    // 3
+    var xValues = [50,60,70,80,90,100,110,120,130,140,150];
+    var yValues = [7,8,8,9,9,9,10,11,14,14,15];
+
+    new Chart("myChart3", {
+    type: "line",
+    data: {
+        labels: xValues,
+        datasets: [{
+        fill: false,
+        lineTension: 0,
+        backgroundColor: "rgba(0,0,255,1.0)",
+        borderColor: "rgba(0,0,255,0.1)",
+        data: yValues
+        }]
+    },
+    options: {
+        legend: {display: false},
+        scales: {
+        yAxes: [{ticks: {min: 6, max:16}}],
+        }
+    }
+    });
+        // 4
+    var xValues = [];
+    var yValues = [];
+    generateData("Math.sin(x)", 0, 10, 0.5);
+
+    new Chart("myChart4", {
+    type: "line",
+    data: {
+        labels: xValues,
+        datasets: [{
+        fill: false,
+        pointRadius: 2,
+        borderColor: "rgba(0,0,255,0.5)",
+        data: yValues
+        }]
+    },    
+    options: {
+        legend: {display: false},
+        title: {
+        display: true,
+        fontSize: 16
+        }
+    }
+    });
+    function generateData(value, i1, i2, step = 1) {
+    for (let x = i1; x <= i2; x += step) {
+        yValues.push(eval(value));
+        xValues.push(x);
+    }
+    }
+   
+</script>
 </html>
