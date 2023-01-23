@@ -282,7 +282,7 @@ const puppeteer = require('puppeteer');
     const browser = await puppeteer.launch();
     const page = await browser.newPage();
     try{
-      await page.goto('https://8081-eedcccaddecfdbbdbdebbaccfdbafdcfafd.examlyiopb.examly.io');
+      await page.goto('http://localhost:4200');
       await page.setViewport({
         width:1200,
         height:800,
@@ -302,7 +302,7 @@ const puppeteer = require('puppeteer');
     const browser = await puppeteer.launch();
     const page = await browser.newPage();
     try{
-      await page.goto('https://8081-eedcccaddecfdbbdbdebbaccfdbafdcfafd.examlyiopb.examly.io');
+      await page.goto('http://localhost:4200');
       await page.setViewport({
         width:1200,
         height:800,
@@ -345,7 +345,7 @@ const puppeteer = require('puppeteer');
     const browser = await puppeteer.launch();
     const page = await browser.newPage();
     try{
-      await page.goto('https://8081-eedcccaddecfdbbdbdebbaccfdbafdcfafd.examlyiopb.examly.io');
+      await page.goto('http://localhost:4200');
       await page.setViewport({
         width:1200,
         height:800,
